@@ -20,10 +20,11 @@ export const startup = (port: number = 3001) => {
     next();
   });
 
-  routes(app);
-
   // CORS Preflight
   app.options("*", (req: any, res: any) => res.status(200).send());
+
+  // All routes
+  routes(app);
 
   // 404 catch all
   app.use((req: any, res: any, next: () => void) => {
